@@ -1,0 +1,6 @@
+{
+  "name": "NeuroFlux",
+  "description": "Real-time hyperlocal air quality index (AQI) telemetry HUD featuring a futuristic mission-control command deck with rotating vector compasses and 3D sensory diagnostics.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

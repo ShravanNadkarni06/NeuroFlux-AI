@@ -1,0 +1,18 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Anyone can read/write reports, hotspots, and chat history for the dashboard
+    match /citizen_reports/{document} {
+      allow read, write: if true;
+    }
+    match /detected_hotspots/{document} {
+      allow read, write: if true;
+    }
+    match /chat_sessions/{document} {
+      allow read, write: if true;
+    }
+    match /chat_sessions/{session}/messages/{document} {
+      allow read, write: if true;
+    }
+  }
+}
