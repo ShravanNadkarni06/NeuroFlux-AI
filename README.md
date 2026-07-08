@@ -98,6 +98,3 @@ Hyperlocal pollution events are, by definition, invisible to city-wide monitorin
 
 ---
 
-## License
-
-Add your preferred license here (MIT recommended for hackathon/open-source submissions).
