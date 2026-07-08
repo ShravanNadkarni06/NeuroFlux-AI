@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Futuristic Base Styles */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #030611;
+  color: #c9d5ff;
+  font-family: var(--font-sans);
+}
+
+/* Sci-fi Hologram Glassmorphism Panel style */
+.glass-panel {
+  background: rgba(5, 12, 30, 0.45);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  border: 1px solid rgba(0, 212, 255, 0.15);
+  box-shadow: 
+    0 10px 40px -10px rgba(0, 0, 0, 0.7),
+    inset 0 1px 1px rgba(255, 255, 255, 0.05),
+    inset 0 0 15px rgba(0, 212, 255, 0.03);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel:hover {
+  border-color: rgba(0, 212, 255, 0.3);
+  box-shadow: 
+    0 15px 45px -10px rgba(0, 0, 0, 0.8),
+    inset 0 1px 1px rgba(255, 255, 255, 0.08),
+    inset 0 0 25px rgba(0, 212, 255, 0.06);
+  transform: translateY(-2px);
+}
+
+/* Sci-Fi Scanner line effect across panels */
+.scanner-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.8), transparent);
+  animation: scan 4s linear infinite;
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0.7;
+}
+
+@keyframes scan {
+  0% { top: 0%; }
+  50% { top: 100%; }
+  100% { top: 0%; }
+}
+
+/* Sci-Fi Grid lines */
+.grid-overlay {
+  background-size: 30px 30px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+}
+
+/* Tilt effects */
+.cyber-tilt {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+/* Glow classes */
+.glow-cyan-border {
+  border-color: rgba(0, 212, 255, 0.35);
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.15);
+}
+
+.glow-blue-border {
+  border-color: rgba(41, 121, 255, 0.35);
+  box-shadow: 0 0 15px rgba(41, 121, 255, 0.15);
+}
+
+/* Leaflet dark-cyberpunk overrides */
+.leaflet-container {
+  background: #040815 !important;
+}
+
+.leaflet-bar {
+  border: 1px solid rgba(0, 212, 255, 0.2) !important;
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.15) !important;
+  background-color: rgba(4, 9, 23, 0.9) !important;
+  border-radius: 6px !important;
+  overflow: hidden;
+}
+
+.leaflet-bar a {
+  background-color: rgba(4, 9, 23, 0.95) !important;
+  color: #00D4FF !important;
+  border-bottom: 1px solid rgba(0, 212, 255, 0.1) !important;
+}
+
+.leaflet-bar a:hover {
+  background-color: rgba(0, 212, 255, 0.15) !important;
+  color: #ffffff !important;
+}
+
+.leaflet-control-attribution {
+  background: rgba(4, 9, 23, 0.85) !important;
+  color: rgba(0, 212, 255, 0.4) !important;
+  border-top-left-radius: 8px;
+  border: 1px solid rgba(0, 212, 255, 0.1);
+  font-family: var(--font-mono);
+  font-size: 8px !important;
+}
+
+.leaflet-control-attribution a {
+  color: #00D4FF !important;
+}
+
+/* Custom interactive scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(4, 8, 21, 0.4);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 212, 255, 0.2);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 212, 255, 0.5);
+}
+
+/* Animated Cyber Pulse for map marker */
+@keyframes cyber-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.6), 0 0 0 2px rgba(0, 212, 255, 0.3);
+    transform: scale(0.95);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(0, 212, 255, 0), 0 0 0 4px rgba(0, 212, 255, 0);
+    transform: scale(1.05);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 212, 255, 0), 0 0 0 0 rgba(0, 212, 255, 0);
+    transform: scale(0.95);
+  }
+}
+
+.cyber-marker {
+  border-radius: 50%;
+  animation: cyber-pulse 2s infinite;
+}
+
+/* Pulsing text glow */
+@keyframes neon-glow-pulse {
+  0%, 100% {
+    text-shadow: 0 0 8px rgba(0, 212, 255, 0.6), 0 0 20px rgba(0, 212, 255, 0.2);
+  }
+  50% {
+    text-shadow: 0 0 15px rgba(0, 212, 255, 0.9), 0 0 30px rgba(0, 212, 255, 0.4);
+  }
+}
+
+.neon-glow {
+  animation: neon-glow-pulse 3s infinite;
+}
+
+/* Loading Hologram Shimmer */
+@keyframes holo-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.holo-shimmer {
+  background: linear-gradient(
+    90deg, 
+    rgba(0, 212, 255, 0.02) 25%, 
+    rgba(0, 212, 255, 0.12) 50%, 
+    rgba(0, 212, 255, 0.02) 75%
+  );
+  background-size: 200% 100%;
+  animation: holo-shimmer 1.8s infinite;
+}
